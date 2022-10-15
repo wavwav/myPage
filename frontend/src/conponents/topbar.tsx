@@ -19,7 +19,9 @@ const pageTitle = ['Home', 'Biography', 'Contact','Link'];
 const TopBar = () => {
 
   return (
-    <AppBar position="static" sx={{paddingRight : 0
+    <AppBar position="static" sx={{
+      paddingRight : 0,
+      marginTop : 0
     , boxShadow: '0 0 0 0 rgba(0, 0, 0, .0)'
     ,bgcolor:'#000000'
     }}>
@@ -27,7 +29,7 @@ const TopBar = () => {
       sx={{
                   padding:0
       }}>
-        <Toolbar disableGutters sx={{padding:'0 0 0 0'}}>
+        <Toolbar disableGutters sx={{padding:'0 0 0 0' , height: '10pxs'}}>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'center'} }}>
             {pageTitle.map((page,index) => (
               <Button
@@ -39,6 +41,8 @@ const TopBar = () => {
               >
                 <Typography variant='subtitle1'     sx={{
                   fontWeight:'bold'
+                  ,
+                  fontFamily:'Noto Sans CJK JP'
                 }}>
                 {page}
                 </Typography>
