@@ -12,7 +12,9 @@ sx={{
 fontWeight:'body',
 fontFamily:'Noto Sans CJK JP',
 opacity:'0.8',
-color:'#000000'
+color:'#000000',
+lineHeight: 1.4,
+whiteSpace: "pre-wrap"
 }}>
     {name}
 </Typography>
