@@ -26,7 +26,10 @@ const useStyles = makeStyles(() => 　({
     textAlign:'center'
   },
   bodyPosition:{
-marginTop:'24px',
+    marginTop:'24px',
+  },
+  bodyItemPosition:{
+    marginTop:'16px',
   },
 }));
 
@@ -36,14 +39,15 @@ function Home() {
     <Box>
   <TopBar />
   <Grid container={true} className={classes.rootPadding}>
+    {/* 自己紹介 */}
     <Grid container={true} item={true}>
       <Box className={classes.defaultBoxPosition}>
-       <Grid item={true} lg={6} md={6} >
+       <Grid item={true} lg={6} md={6} xs={6}>
             <Box className={classes.rightSeparate}>
       <img src={nekko} width='479px' height='279.73px' />
       </Box>
       </Grid>
-         <Grid item={true} lg={6} md={6}>
+         <Grid item={true} lg={6} md={6} xs={6}>
       <Box className={classes.leftSeparate}>
       <SubtitleTypo name='Introduction' />
       <Box className={classes.bodyPosition}>
@@ -59,6 +63,7 @@ SIerにて新卒から働いており、現在3年目になります。
       </Grid>
       </Box>
     </Grid>
+    {/* 趣味 */}
     <Grid container={true} item={true} >
       <Box className={classes.defaultBoxPosition}>
        <Grid item={true} lg={6} md={6} >
@@ -80,6 +85,7 @@ SIerにて新卒から働いており、現在3年目になります。
       </Grid>
       </Box>
     </Grid>
+    {/* アーキ */}
     <Grid container={true} item={true}>
       <Box className={classes.defaultBoxPosition}>
        <Grid item={true} lg={6} md={6} xs={6}>
@@ -92,11 +98,19 @@ SIerにて新卒から働いており、現在3年目になります。
       <SubtitleTypo name='Architecture' />
        <Box className={classes.bodyPosition}>
       <HomeBodyTypo name='・react: 18.2.0' />
+      <Box className={classes.bodyItemPosition}>
       <HomeBodyTypo name='・typescript: 4.8.4' />
+      </Box>
+  <Box className={classes.bodyItemPosition}>
       <HomeBodyTypo name='・@mui/material: 5.10.9' />
-      <HomeBodyTypo name='使用したライブラリと各バージョンは上記です。' />
-      <HomeBodyTypo name='詳しくはGitHubをご参照ください。' />
+</Box>
+       <Box className={classes.bodyItemPosition}>
+      <HomeBodyTypo name={`使用したライブラリと各バージョンは上記です。
+ 詳しくはGitHubをご参照ください。`} />
+        </Box>
+          <Box className={classes.bodyItemPosition}>
       <HomeBodyTypo name='GitHub:https://github.com/wavwav/myPage' />
+      </Box>
       </Box>
       </Box>
       </Grid>
