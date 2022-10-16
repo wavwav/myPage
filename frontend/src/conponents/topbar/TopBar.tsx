@@ -6,6 +6,8 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import {  makeStyles } from '@mui/styles';
 import TopBarTypo from './TopBarTypo';
+import { Link } from 'react-router-dom'
+import Biography from '../../pages/Biography';
 
 const pageTitle = ['Home', 'Biography', 'Contact','Link'];
 
@@ -22,6 +24,19 @@ const useStyles = makeStyles(() => 　({
   },
 }));
 
+const toList = (name:string):string => {
+  if(name === 'Biography'){
+    return '/biography'
+  } if(name === 'Contact'){
+    return '/contact'
+  } if(name === 'Link'){
+    return '/link'
+  }
+
+  return '/'
+
+}
+
 const TopBar = () => {
 
   const classes = useStyles();
@@ -32,6 +47,7 @@ const TopBar = () => {
     bgcolor:'#000000',
     position: "fixed",
     zIndex: 9999,
+
     }}
     className={classes.toolbarWrapper}
     >
@@ -48,8 +64,14 @@ const TopBar = () => {
                 key={page}
                 sx={{
                   color:'#FFFFFF',
-                  marginRight: pageTitle.length === index + 1 ? 0 : '64px'
+                  marginRight: pageTitle.length === index + 1 ? 0 : '64px',
+                   '& :hover':{
+                    color:'#FFFFFF',
+                    opacity:0.6
+                },
                 }}
+              component={Link}
+              to={toList(page)}
               >
                 <TopBarTypo titleName={page} />
               </Button>

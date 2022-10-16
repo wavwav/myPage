@@ -121,6 +121,9 @@ SIerにて新卒から働いており、現在3年目になります。
       <HomeBodyTypo name='・@mui/material: 5.10.9' />
       </Box>
        <Box className={classes.bodyItemPosition}>
+      <HomeBodyTypo name='・react-router-dom :6.4.2' />
+      </Box>
+       <Box className={classes.bodyItemPosition}>
       <HomeBodyTypo name={`今回使用したライブラリと言語の各バージョンは上記です。詳しくはGitHubをご参照ください。`} />
         </Box>
         <Box className={classes.bodyItemPosition}>
