@@ -2,7 +2,7 @@ import { Box, Grid } from '@mui/material';
 import React from 'react';
 import TopBar from '../conponents/topbar/TopBar';
 import {  makeStyles } from '@mui/styles';
-import SubtitleTypo from '../conponents/SubtitleTypo';
+import SubtitleTypo from '../conponents/pageUtil/SubtitleTypo';
 import nekko from '../nekko.png';
 import BodyTypo from '../conponents/pageUtil/BodyTypo';
 import yunosen from '../yunosen.png'
