@@ -7,6 +7,7 @@ import FormTitleTypo from '../conponents/pageUtil/FormTitleTypo';
 import emailjs from '@emailjs/browser';
 import { TextField } from '@mui/material';
 import styled from '@mui/material/styles/styled';
+import { Button } from '@mui/material';
 
 const useStyles = makeStyles(() => ({
   rootPadding: {
@@ -24,12 +25,14 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
     display: 'flex'
   },
-  bodyPosition: {
-    marginTop: '24px',
+  nameMargin: {
+    marginRight: '192px',
+  },
+  mailMargin: {
+    marginRight: '136px',
   },
   fieldStyle: {
     marginRight: '192px',
-    height: '40px'
   },
   nameForms: {
     marginTop: '40px',
@@ -65,91 +68,94 @@ function Contact() {
   const templateID = process.env.REACT_APP_TEMPLATE_ID;
   const publicKey = process.env.REACT_APP_PUBLIC_KEY;
 
-  const [name, setName] = useState<string>();
-  const [mail, setMail] = useState<string>();
-  const [title, setTitle] = useState<string>();
-  const [message, setMessage] = useState<string>();
+  const [name, setName] = useState<string>('');
+  const [mail, setMail] = useState<string>('');
+  const [title, setTitle] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
 
   const classes = useStyles();
-  const form = useRef();
+
+  (function () {
+    emailjs.init(publicKey || '');
+    console.log(publicKey)
+  })();
 
   const sendEmail = (e: any) => {
     e.preventDefault();
-    emailjs.sendForm(serviceID || '', templateID || '', form.current || '', publicKey)
-      .then((result: any) => {
-        console.log(result.text);
-      }, (error: any) => {
-        console.log(error.text);
-      });
-  };
-  if (
-    publicKey !== undefined &&
-    serviceID !== undefined &&
-    templateID !== undefined
-  ) {
+
     const template_param = {
       to_name: name,
       from_email: mail,
       title: title,
       message: message,
     }
-  };
+
+    emailjs.send(
+      serviceID || '',
+      templateID || '',
+      template_param,
+      publicKey || ''
+    ).then(() => {
+      window.alert('お問い合わせを送信致しました。');
+      setName('');
+      setMail('');
+      setMessage('');
+      setTitle('');
+    });
+
+  }
 
   return (
     <Box>
       <TopBar />
       <Grid container={true} className={classes.rootPadding}>
         <Box className={classes.topDefaultBoxPosition}>
-
           <SubtitleTypo name='Contact' />
-
-          <form onSubmit={sendEmail}>
-            <Box>
-              <Box className={classes.nameForms}>
-                <Box style={{ marginRight: '192px' }}>
-                  <FormTitleTypo name="お名前" />
-                </Box>
-                <StyledTextField id="to_name" placeholder="サウナ　太郎" variant="outlined" value={name} defaultValue=''
-                  onChange={(e) => setName(e.target.value)} sx={{
-                    marginRight: '192px',
-                    height: '40px'
-                  }}
-                  className={classes.fieldStyle} />
+          <Box >
+            <Box className={classes.nameForms}>
+              <Box className={classes.nameMargin}>
+                <FormTitleTypo name="お名前" />
               </Box>
-              <Box className={classes.othersForms}>
-                <FormTitleTypo name="メールアドレス" />
-                <StyledTextField id="from_email" placeholder="sunataro@sauna.co.jp" variant="outlined" value={mail} defaultValue=''
-                  onChange={(e) => setMail(e.target.value)}
-                  sx={{
-                    marginRight: '192px',
-                    height: '40px'
-                  }}
-                  className={classes.fieldStyle} />
-              </Box>
-              <Box className={classes.othersForms}>
-                <FormTitleTypo name="件名" />
-                <StyledTextField id="title" placeholder="○○の件" variant="outlined" value={title} defaultValue=''
-                  onChange={(e) => setTitle(e.target.value)}
-                  sx={{
-                    marginRight: '192px',
-                    height: '40px'
-                  }}
-                  className={classes.fieldStyle} />
-              </Box>
-              <Box className={classes.othersForms}>
-                <FormTitleTypo name="本文" />
-                <StyledTextField id="message" placeholder="〇〇の件で連絡しました。" variant="outlined" value={message} defaultValue=''
-                  onChange={(e) => setMessage(e.target.value)}
-                  sx={{
-                    marginRight: '192px',
-                    height: '40px'
-                  }}
-                  className={classes.fieldStyle} />
-              </Box>
-              <input type="submit" value="Send" />
+              <StyledTextField id="to_name" placeholder="サウナ　太郎" variant="outlined" value={name} defaultValue=''
+                onChange={(e) => setName(e.target.value)}
+                className={classes.fieldStyle} />
             </Box>
-          </form>
+            <Box className={classes.othersForms}>
+              <Box className={classes.mailMargin}>
+                <FormTitleTypo name="メールアドレス" />
+              </Box>
+              <StyledTextField id="from_email" placeholder="sunataro@sauna.co.jp" variant="outlined" value={mail} defaultValue=''
+                onChange={(e) => setMail(e.target.value)}
+                sx={{
+                  marginRight: '192px',
 
+                }}
+                className={classes.fieldStyle} />
+            </Box>
+            <Box className={classes.othersForms}>
+              <FormTitleTypo name="件名" />
+              <StyledTextField id="title" placeholder="○○の件" variant="outlined" value={title} defaultValue=''
+                onChange={(e) => setTitle(e.target.value)}
+                sx={{
+                  marginRight: '192px',
+
+                }}
+                className={classes.fieldStyle} />
+            </Box>
+            <Box className={classes.othersForms}>
+              <FormTitleTypo name="本文" />
+              <StyledTextField id="message" placeholder="〇〇の件で連絡しました。" variant="outlined" value={message} defaultValue=''
+                onChange={(e) => setMessage(e.target.value)}
+                sx={{
+                  marginRight: '192px',
+
+                }}
+                className={classes.fieldStyle} />
+            </Box>
+            <Button onClick={(e) => sendEmail(e)}>
+              ボタン
+              </Button>
+          </Box>
         </Box>
       </Grid>
     </Box>
