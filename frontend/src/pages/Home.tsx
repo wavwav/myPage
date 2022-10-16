@@ -86,12 +86,10 @@ SIerにて新卒から働いており、現在3年目になります。
       </Box>
     </Grid>
     {/* アーキ */}
-    <Grid container={true} item={true}>
+    <Grid container={true} item={true} >
       <Box className={classes.defaultBoxPosition}>
-       <Grid item={true} lg={6} md={6} xs={6}>
-      <Box className={classes.rightSeparate}>
+       <Grid item={true} lg={6} md={6} xs={6} style={{marginRight:'68px'}}>
       <img src={work} width='420.01' height='279.73px' />
-      </Box>
       </Grid>
       <Grid item={true} lg={6} md={6} xs={6}>
       <Box className={classes.leftSeparate}>
