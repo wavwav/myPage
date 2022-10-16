@@ -7,6 +7,7 @@ import nekko from '../nekko.png';
 import HomeBodyTypo from '../conponents/home/HomeBodyTypo';
 import yunosen from '../yunosen.png'
 import work from '../work.png';
+import book from '../book.png';
 
 const useStyles = makeStyles(() => 　({
   rootPadding: {
@@ -16,14 +17,20 @@ const useStyles = makeStyles(() => 　({
     marginTop:'120px',
     display:'flex'
   },
+  topDefaultBoxPosition: {
+    marginTop:'160px',
+    display:'flex'
+  },
   leftSeparate:{
     marginLeft:'68px'
   },
   rightSeparate:{
-    marginRight:'68px'
+    marginRight:'68px',
   },
-  yunosenPosition:{
-    textAlign:'center'
+  pngPosition:{
+    textAlign:'center',
+    justifyContent:'center',
+    display:'flex'
   },
   bodyPosition:{
     marginTop:'24px',
@@ -31,42 +38,49 @@ const useStyles = makeStyles(() => 　({
   bodyItemPosition:{
     marginTop:'16px',
   },
+  bottomDefaultBoxPosition: {
+    marginTop:'120px',
+    display:'flex',
+    marginBottom:'120px'
+  },
 }));
 
 function Home() {
    const classes = useStyles();
   return (
-    <Box>
+  <Box>
   <TopBar />
   <Grid container={true} className={classes.rootPadding}>
     {/* 自己紹介 */}
-    <Grid container={true} item={true}>
-      <Box className={classes.defaultBoxPosition}>
+    <Grid container={true} item={true} lg={12} md={12} xs={12}>
+      <Box className={classes.topDefaultBoxPosition}>
        <Grid item={true} lg={6} md={6} xs={6}>
-            <Box className={classes.rightSeparate}>
-      <img src={nekko} width='479px' height='279.73px' />
-      </Box>
+        <Box className={classes.rightSeparate}>
+          <Box className={classes.pngPosition}>
+          <img src={nekko} width='279.73px' height='163.36px' />
+          </Box>
+        </Box>
       </Grid>
-         <Grid item={true} lg={6} md={6} xs={6}>
+      <Grid item={true} lg={6} md={6} xs={6}>
       <Box className={classes.leftSeparate}>
       <SubtitleTypo name='Introduction' />
       <Box className={classes.bodyPosition}>
       <HomeBodyTypo name={`初めまして。
 SIerにて新卒から働いており、現在3年目になります。
-2022年度の上期までは人事系のシステムをスクラムにて開発し、TypeScriptとReactを用いたSPAによるフロントエンド開発やJavaとSpring Boot を用いたバックエンド開発、Oracleを用いたDB設計やデータの操作等を経験してきました。
-また、並行して同プロダクトのUI/UXのデザインに携わり、25画面ほどの画面モックをアウトプットとして納品することができました。
-下期からはサブシステムの新機能の開発が始まるため、UI/UXのデザイン及びスクラムマスターを担当する予定です。
+2022年度の上期は人事系のシステムをスクラムにて開発し、TypeScriptとReactを用いたSPAによるフロントエンド開発やJavaとSpring Boot を用いたバックエンド開発、Oracleを用いたDB設計やデータの操作等を経験してきました。
+また、並行して同プロダクトのUI/UXのデザインに携わり、25画面ほどの画面モックを成果物として納品することができました。
+下期からはサブシステムの開発が始まり、UI/UXのデザイン及びスクラムマスターを担当する予定です。
 その他にはウォーターフォール開発にて営業支援系のシステムのエンハンス業務、外部人材系の運用保守業務を経験したことがあります。
-硬い話ばかりになってしまいましたが、現在までの業務経験及び自己学習の成果を何か形として残したいと思い、本サイトを設立いたしました。`} />
+現在までの業務経験及び自己学習の成果を何か形として残したいと思い、本サイトを設立いたしました。`} />
 </Box>
       </Box>
       </Grid>
       </Box>
     </Grid>
     {/* 趣味 */}
-    <Grid container={true} item={true} >
+    <Grid container={true} item={true} lg={12} md={12} xs={12}>
       <Box className={classes.defaultBoxPosition}>
-       <Grid item={true} lg={6} md={6} >
+       <Grid item={true} lg={6} md={6} xs={6}>
        <Box className={classes.rightSeparate}>
       <SubtitleTypo name='Hobby' />
       <Box className={classes.bodyPosition}>
@@ -78,37 +92,60 @@ SIerにて新卒から働いており、現在3年目になります。
       </Grid>
        <Grid item={true} lg={6} md={6} xs={6}>
       <Box className={classes.leftSeparate}>
-        <Box className={classes.yunosenPosition}>
-      <img src={yunosen} width='279.73' height='279.73px' />
+        <Box className={classes.pngPosition}>
+      <img src={yunosen} width='279.73px' height='279.73px' />
       </Box>
       </Box>
       </Grid>
       </Box>
     </Grid>
     {/* アーキ */}
-    <Grid container={true} item={true} >
+    <Grid container={true} item={true} lg={12} md={12} xs={12}>
       <Box className={classes.defaultBoxPosition}>
-       <Grid item={true} lg={6} md={6} xs={6} style={{marginRight:'68px'}}>
-      <img src={work} width='420.01' height='279.73px' />
-      </Grid>
       <Grid item={true} lg={6} md={6} xs={6}>
+      <Box className={classes.rightSeparate}>
+      <Box className={classes.pngPosition}>
+      <img src={work} width='279.73px' height='186.3px'/>
+      </Box>
+      </Box>
+      </Grid>
+       <Grid item={true} lg={6} md={6} xs={6}>
       <Box className={classes.leftSeparate}>
       <SubtitleTypo name='Architecture' />
-       <Box className={classes.bodyPosition}>
+      <Box className={classes.bodyPosition}>
       <HomeBodyTypo name='・react: 18.2.0' />
       <Box className={classes.bodyItemPosition}>
       <HomeBodyTypo name='・typescript: 4.8.4' />
       </Box>
-  <Box className={classes.bodyItemPosition}>
+      <Box className={classes.bodyItemPosition}>
       <HomeBodyTypo name='・@mui/material: 5.10.9' />
-</Box>
-       <Box className={classes.bodyItemPosition}>
-      <HomeBodyTypo name={`使用したライブラリと各バージョンは上記です。
- 詳しくはGitHubをご参照ください。`} />
-        </Box>
-          <Box className={classes.bodyItemPosition}>
-      <HomeBodyTypo name='GitHub:https://github.com/wavwav/myPage' />
       </Box>
+       <Box className={classes.bodyItemPosition}>
+      <HomeBodyTypo name={`今回使用したライブラリと言語の各バージョンは上記です。詳しくはGitHubをご参照ください。`} />
+        </Box>
+        <Box className={classes.bodyItemPosition}>
+          <HomeBodyTypo name='GitHub:https://github.com/wavwav/myPage' />
+        </Box>
+      </Box>
+      </Box>
+      </Grid>
+      </Box>
+    </Grid>
+    {/* 趣味 */}
+    <Grid container={true} item={true} lg={12} md={12} xs={12}>
+      <Box className={classes.bottomDefaultBoxPosition}>
+       <Grid item={true} lg={6} md={6} xs={6}>
+       <Box className={classes.rightSeparate}>
+      <SubtitleTypo name='Finally' />
+      <Box className={classes.bodyPosition}>
+      <HomeBodyTypo name={`ここまで読んでくださり、ありがとうございます。本サイトの今後に運用等ついては検討中です。`}/>
+</Box>
+</Box>
+      </Grid>
+       <Grid item={true} lg={6} md={6} xs={6}>
+      <Box className={classes.leftSeparate}>
+        <Box className={classes.pngPosition}>
+      <img src={book} width='279.73px' height='186.3px' />
       </Box>
       </Box>
       </Grid>

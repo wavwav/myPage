@@ -28,8 +28,10 @@ const TopBar = () => {
 
   return (
     <AppBar position="static" sx={{
-     boxShadow: '0 0 0 0 rgba(0, 0, 0, .0)'
-    ,bgcolor:'#000000'
+     boxShadow: '0 0 0 0 rgba(0, 0, 0, .0)',
+    bgcolor:'#000000',
+    position: "fixed",
+    zIndex: 9999,
     }}
     className={classes.toolbarWrapper}
     >
