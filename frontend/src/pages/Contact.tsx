@@ -1,5 +1,5 @@
-import { Box, Grid } from '@mui/material';
-import React, { useRef, useState } from 'react';
+import { Box, Grid, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import TopBar from '../conponents/topbar/TopBar';
 import { makeStyles } from '@mui/styles';
 import SubtitleTypo from '../conponents/pageUtil/SubtitleTypo';
@@ -8,6 +8,17 @@ import emailjs from '@emailjs/browser';
 import { TextField } from '@mui/material';
 import styled from '@mui/material/styles/styled';
 import { Button } from '@mui/material';
+import { isEmpty } from 'lodash';
+import { IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import { couldStartTrivia } from 'typescript';
+import { SnackbarContent } from '@mui/material';
+
+export interface State extends SnackbarOrigin {
+  open: boolean;
+
+}
 
 const useStyles = makeStyles(() => ({
   rootPadding: {
@@ -20,45 +31,83 @@ const useStyles = makeStyles(() => ({
   topDefaultBoxPosition: {
     marginTop: '180px',
   },
-  pngPosition: {
-    textAlign: 'center',
-    justifyContent: 'center',
-    display: 'flex'
+  titleBox: {
+    minWidth: '98px',
+    height: "36.13px",
+    display: 'flex',
+    alignItems: 'center'
   },
-  nameMargin: {
-    marginRight: '192px',
-  },
-  mailMargin: {
+  formsMargin: {
     marginRight: '136px',
   },
-  fieldStyle: {
-    marginRight: '192px',
-  },
   nameForms: {
-    marginTop: '40px',
     display: 'flex',
     alignItems: 'center',
   },
   othersForms: {
     marginTop: '48px',
+  },
+  topBoxMargin: {
+    marginTop: '24px',
+    justifyContent: 'center',
+    display: 'flex'
+  },
+  othersFormTitle: {
+    minWidth: '98px',
+    marginTop: '48px',
+    height: "39px",
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
+  },
+  buttonPosition: {
+    marginTop: '48px',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    width: '806.7px'
+  },
+  caption: {
+    opacity: 0.8,
+  },
+  captionPosition: {
+    marginTop: '40px',
   },
 }));
+
 
 const StyledTextField = styled(TextField)({
   '& .MuiOutlinedInput-input': {
     paddingTop: '8px',
     paddingBottom: '8px',
     paddingLeft: '24px',
-    fontSize: '16px',
-    color: 'rgba(0,0,0,0.5)',
+    paddingRight: '24px',
+    fontSize: '14px',
+    //color: 'rgba(0,0,0,0.5)',
   },
   '& .MuiOutlinedInput-root': {
     heght: "40px",
     borderRadius: '4px',
   },
   minWidth: '572px',
+},
+
+);
+
+const StyledMessageTextField = styled(TextField)({
+  '& .MuiOutlinedInput-input': {
+    paddingTop: '8px',
+    paddingLeft: '24px',
+    paddingBottom: '8px',
+    paddingRight: '24px',
+    fontSize: '14px',
+    //color: 'rgba(0,0,0,0.5)',
+  },
+  '& .MuiOutlinedInput-root': {
+    padding: "0px",
+    borderRadius: '4px',
+    fontSize: '16px',
+  },
+  minWidth: '572px',
+  flexWrap: 'wrap'
 },
 
 );
@@ -75,9 +124,28 @@ function Contact() {
 
   const classes = useStyles();
 
+  // snackbar
+  const [state, setState] = React.useState<State>({
+    open: false,
+    vertical: 'bottom',
+    horizontal: 'center',
+  });
+  const { vertical, horizontal, open } = state;
+
+  const handleClick = () => {
+    setState({
+      open: true,
+      vertical: 'bottom',
+      horizontal: 'center'
+    });
+  };
+
+  const handleClose = () => {
+    setState({ ...state, open: false });
+  };
+
   (function () {
     emailjs.init(publicKey || '');
-    console.log(publicKey)
   })();
 
   const sendEmail = (e: any) => {
@@ -96,7 +164,7 @@ function Contact() {
       template_param,
       publicKey || ''
     ).then(() => {
-      window.alert('お問い合わせを送信致しました。');
+      handleClick()
       setName('');
       setMail('');
       setMessage('');
@@ -111,53 +179,82 @@ function Contact() {
       <Grid container={true} className={classes.rootPadding}>
         <Box className={classes.topDefaultBoxPosition}>
           <SubtitleTypo name='Contact' />
-          <Box >
-            <Box className={classes.nameForms}>
-              <Box className={classes.nameMargin}>
+          <Box className={classes.captionPosition}>
+            <Typography variant='caption' className={classes.caption}>全て必須の項目であるため、入力後に送信ができるようになります。</Typography>
+          </Box>
+          <Box className={classes.topBoxMargin}>
+            <Box className={classes.formsMargin}>
+              <Box className={classes.titleBox}>
                 <FormTitleTypo name="お名前" />
-              </Box>
-              <StyledTextField id="to_name" placeholder="サウナ　太郎" variant="outlined" value={name} defaultValue=''
-                onChange={(e) => setName(e.target.value)}
-                className={classes.fieldStyle} />
-            </Box>
-            <Box className={classes.othersForms}>
-              <Box className={classes.mailMargin}>
+              </ Box>
+              <Box className={classes.othersFormTitle}>
                 <FormTitleTypo name="メールアドレス" />
               </Box>
-              <StyledTextField id="from_email" placeholder="sunataro@sauna.co.jp" variant="outlined" value={mail} defaultValue=''
-                onChange={(e) => setMail(e.target.value)}
-                sx={{
-                  marginRight: '192px',
-
-                }}
-                className={classes.fieldStyle} />
+              <Box className={classes.othersFormTitle}>
+                <FormTitleTypo name="件名" />
+              </Box>
+              <Box className={classes.othersFormTitle}>
+                <FormTitleTypo name="本文" />
+              </Box>
             </Box>
-            <Box className={classes.othersForms}>
-              <FormTitleTypo name="件名" />
-              <StyledTextField id="title" placeholder="○○の件" variant="outlined" value={title} defaultValue=''
-                onChange={(e) => setTitle(e.target.value)}
-                sx={{
-                  marginRight: '192px',
+            {/* フォーム */}
+            <Box>
+              <StyledTextField id="to_name" placeholder="サウナ　太郎" variant="outlined" value={name} defaultValue=''
+                onChange={(e) => setName(e.target.value)}
+              />
 
-                }}
-                className={classes.fieldStyle} />
-            </Box>
-            <Box className={classes.othersForms}>
-              <FormTitleTypo name="本文" />
-              <StyledTextField id="message" placeholder="〇〇の件で連絡しました。" variant="outlined" value={message} defaultValue=''
-                onChange={(e) => setMessage(e.target.value)}
-                sx={{
-                  marginRight: '192px',
+              <Box className={classes.othersForms}>
+                <StyledTextField id="from_email" placeholder="sunataro@sauna.co.jp" variant="outlined" value={mail} defaultValue=''
+                  onChange={(e) => setMail(e.target.value)}
+                  sx={{
+                    marginRight: '192px',
 
-                }}
-                className={classes.fieldStyle} />
+                  }}
+                />
+              </Box>
+              <Box className={classes.othersForms}>
+                <StyledTextField id="title" placeholder="○○の件" variant="outlined" value={title} defaultValue=''
+                  onChange={(e) => setTitle(e.target.value)}
+                  sx={{
+                    marginRight: '192px',
+
+                  }}
+                />
+              </Box>
+              <Box className={classes.othersForms}>
+                <StyledMessageTextField id="message" placeholder="〇〇の件で連絡しました。" variant="outlined" value={message} defaultValue=''
+                  onChange={(e) => setMessage(e.target.value)}
+                  multiline={true}
+                  sx={{
+                    marginRight: '192px',
+
+                  }}
+                />
+              </Box>
             </Box>
-            <Button onClick={(e) => sendEmail(e)}>
-              ボタン
-              </Button>
+          </Box>
+          <Box className={classes.buttonPosition}>
+            <Button variant='contained' color='primary' onClick={(e) => sendEmail(e)}
+              disabled={isEmpty(name) || isEmpty(mail) || isEmpty(title) || isEmpty(message)}>
+              送信
+          </Button>
           </Box>
         </Box>
       </Grid>
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        onClose={handleClose}
+        message="お問い合わせを送信致しました。"
+        key={vertical + horizontal}
+
+      >
+        <SnackbarContent style={{
+          backgroundColor: '#5CB85C',
+        }}
+          message={<span id="client-snackbar">お問い合わせを送信致しました。</span>}
+        />
+      </Snackbar>
     </Box>
   );
 }
