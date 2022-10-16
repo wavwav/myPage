@@ -13,6 +13,7 @@ const useStyles = makeStyles(() => 　({
   },
   defaultBoxPosition: {
     marginTop:'120px',
+    display:'flex'
   },
   leftSeparate:{
     marginLeft:'68px'
@@ -33,12 +34,12 @@ function Home() {
   <Grid container={true} className={classes.rootPadding}>
     <Grid container={true} item={true}>
       <Box className={classes.defaultBoxPosition}>
-       <Grid item={true} lg={6} md={6} xs={6}>
+       <Grid item={true} lg={6} md={6} >
             <Box className={classes.rightSeparate}>
       <img src={nekko} width='479px' height='279.73px' />
       </Box>
       </Grid>
-         <Grid item={true} lg={6} md={6} xs={6}>
+         <Grid item={true} lg={6} md={6}>
       <Box className={classes.leftSeparate}>
       <SubtitleTypo name='Introduction' />
       <HomeBodyTypo name='初めまして。
@@ -54,7 +55,7 @@ SIerにて新卒から働いており、現在3年目になります。
     </Grid>
     <Grid container={true} item={true} >
       <Box className={classes.defaultBoxPosition}>
-       <Grid item={true} lg={6} md={6} xs={6}>
+       <Grid item={true} lg={6} md={6} >
        <Box className={classes.rightSeparate}>
       <SubtitleTypo name='Hobby' />
       <HomeBodyTypo name='読書、映画、サウナ、旅行などが趣味です！
