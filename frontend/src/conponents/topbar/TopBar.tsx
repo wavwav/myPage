@@ -52,8 +52,7 @@ const TopBar = () => {
     className={classes.toolbarWrapper}
     >
       <Container
-      sx={{
-                  padding:0
+      sx={{padding:0
       }}
 
       >

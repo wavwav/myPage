@@ -5,7 +5,7 @@ interface Props {
   name: string;
 }
 
-const HomeBodyTypo:React.FC<Props> = ({name}) => {
+const BodyTypo:React.FC<Props> = ({name}) => {
   return (
 <Typography variant='body2'
 sx={{
@@ -21,4 +21,4 @@ whiteSpace: "pre-wrap"
   );
 };
 
-export default HomeBodyTypo;
+export default BodyTypo;

@@ -4,7 +4,7 @@ import TopBar from '../conponents/topbar/TopBar';
 import {  makeStyles } from '@mui/styles';
 import SubtitleTypo from '../conponents/SubtitleTypo';
 import nekko from '../nekko.png';
-import HomeBodyTypo from '../conponents/home/HomeBodyTypo';
+import BodyTypo from '../conponents/pageUtil/BodyTypo';
 import yunosen from '../yunosen.png'
 import work from '../work.png';
 import book from '../book.png';
@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => 　({
     display:'flex'
   },
   topDefaultBoxPosition: {
-    marginTop:'160px',
+    marginTop:'180px',
     display:'flex'
   },
   leftSeparate:{
@@ -65,7 +65,7 @@ function Home() {
       <Box className={classes.leftSeparate}>
       <SubtitleTypo name='Introduction' />
       <Box className={classes.bodyPosition}>
-      <HomeBodyTypo name={`初めまして。
+      <BodyTypo name={`初めまして。
 SIerにて新卒から働いており、現在3年目になります。
 2022年度の上期は人事系のシステムをスクラムにて開発し、TypeScriptとReactを用いたSPAによるフロントエンド開発やJavaとSpring Boot を用いたバックエンド開発、Oracleを用いたDB設計やデータの操作等を経験してきました。
 また、並行して同プロダクトのUI/UXのデザインに携わり、25画面ほどの画面モックを成果物として納品することができました。
@@ -84,7 +84,7 @@ SIerにて新卒から働いており、現在3年目になります。
        <Box className={classes.rightSeparate}>
       <SubtitleTypo name='Hobby' />
       <Box className={classes.bodyPosition}>
-      <HomeBodyTypo name={`読書、映画、サウナ、旅行などが趣味です！
+      <BodyTypo name={`読書、映画、サウナ、旅行などが趣味です！
 とりあえずやりたいことは実行してみるタイプなので、インドア、アウトドア関係なくなんでも興味があります。
 直近では10日間ほど沖縄に一人で行くなど、行動力には自信があります。`}/>
 </Box>
@@ -113,21 +113,21 @@ SIerにて新卒から働いており、現在3年目になります。
       <Box className={classes.leftSeparate}>
       <SubtitleTypo name='Architecture' />
       <Box className={classes.bodyPosition}>
-      <HomeBodyTypo name='・react: 18.2.0' />
+      <BodyTypo name='・react: 18.2.0' />
       <Box className={classes.bodyItemPosition}>
-      <HomeBodyTypo name='・typescript: 4.8.4' />
+      <BodyTypo name='・typescript: 4.8.4' />
       </Box>
       <Box className={classes.bodyItemPosition}>
-      <HomeBodyTypo name='・@mui/material: 5.10.9' />
+      <BodyTypo name='・@mui/material: 5.10.9' />
       </Box>
        <Box className={classes.bodyItemPosition}>
-      <HomeBodyTypo name='・react-router-dom :6.4.2' />
+      <BodyTypo name='・react-router-dom :6.4.2' />
       </Box>
        <Box className={classes.bodyItemPosition}>
-      <HomeBodyTypo name={`今回使用したライブラリと言語の各バージョンは上記です。詳しくはGitHubをご参照ください。`} />
+      <BodyTypo name={`今回使用したライブラリと言語の各バージョンは上記です。詳しくはGitHubをご参照ください。`} />
         </Box>
         <Box className={classes.bodyItemPosition}>
-          <HomeBodyTypo name='GitHub:https://github.com/wavwav/myPage' />
+          <BodyTypo name='GitHub:https://github.com/wavwav/myPage' />
         </Box>
       </Box>
       </Box>
@@ -141,7 +141,7 @@ SIerにて新卒から働いており、現在3年目になります。
        <Box className={classes.rightSeparate}>
       <SubtitleTypo name='Finally' />
       <Box className={classes.bodyPosition}>
-      <HomeBodyTypo name={`ここまで読んでくださり、ありがとうございます。本サイトの今後に運用等ついては検討中です。`}/>
+      <BodyTypo name={`ここまで読んでくださり、ありがとうございます。本サイトの今後に運用等ついては検討中です。`}/>
 </Box>
 </Box>
       </Grid>

@@ -4,7 +4,7 @@ import TopBar from '../conponents/topbar/TopBar';
 import {  makeStyles } from '@mui/styles';
 import SubtitleTypo from '../conponents/SubtitleTypo';
 import nekko from '../nekko.png';
-import HomeBodyTypo from '../conponents/home/HomeBodyTypo';
+import HomeBodyTypo from '../conponents/pageUtil/BodyTypo';
 import yunosen from '../yunosen.png'
 import work from '../work.png';
 import book from '../book.png';
@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => 　({
     display:'flex'
   },
   topDefaultBoxPosition: {
-    marginTop:'160px',
+    marginTop:'180px',
     display:'flex'
   },
   pngPosition:{

@@ -4,10 +4,11 @@ import TopBar from '../conponents/topbar/TopBar';
 import {  makeStyles } from '@mui/styles';
 import SubtitleTypo from '../conponents/SubtitleTypo';
 import nekko from '../nekko.png';
-import HomeBodyTypo from '../conponents/home/HomeBodyTypo';
+import HomeBodyTypo from '../conponents/pageUtil/BodyTypo';
 import yunosen from '../yunosen.png'
 import work from '../work.png';
 import book from '../book.png';
+import BodyTypo from '../conponents/pageUtil/BodyTypo';
 
 const useStyles = makeStyles(() => 　({
   rootPadding: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles(() => 　({
     display:'flex'
   },
   topDefaultBoxPosition: {
-    marginTop:'160px',
+    marginTop:'180px',
     display:'flex'
   },
   pngPosition:{
@@ -47,6 +48,9 @@ function Link() {
   <Grid container={true} className={classes.rootPadding}>
   <Box className={classes.topDefaultBoxPosition}>
       <SubtitleTypo name='Link' />
+      <Box className={classes.bodyPosition}>
+     <BodyTypo name='未定' />
+      </Box>
   </Box>
 </Grid>
   </Box>
