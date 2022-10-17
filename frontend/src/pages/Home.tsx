@@ -8,6 +8,7 @@ import BodyTypo from '../conponents/pageUtil/BodyTypo';
 import yunosen from '../yunosen.png'
 import work from '../work.png';
 import book from '../book.png';
+import { Link } from '@mui/material';
 
 const useStyles = makeStyles(() => ({
   rootPadding: {
@@ -42,6 +43,10 @@ const useStyles = makeStyles(() => ({
     marginTop: '120px',
     display: 'flex',
     marginBottom: '120px'
+  },
+  gitPosition: {
+    marginTop: '16px',
+    display: 'flex',
   },
 }));
 
@@ -126,8 +131,11 @@ SIerにて新卒から働いており、現在3年目になります。
                   <Box className={classes.bodyItemPosition}>
                     <BodyTypo name={`今回使用したライブラリと言語の各バージョンは上記です。TypeScriptとReactを使用し、デザインコンポーネントにMaterial-UIを使用しています。詳しくはGitHubをご参照ください。`} />
                   </Box>
-                  <Box className={classes.bodyItemPosition}>
-                    <BodyTypo name='GitHub:https://github.com/wavwav/myPage' />
+                  <Box className={classes.gitPosition}>
+                    <BodyTypo name='GitHub:' />
+                    <Link href="https://github.com/wavwav/myPage" underline="hover">
+                      {'https://github.com/wavwav/myPage'}
+                    </Link>
                   </Box>
                 </Box>
               </Box>
@@ -141,7 +149,7 @@ SIerにて新卒から働いており、現在3年目になります。
               <Box className={classes.rightSeparate}>
                 <SubtitleTypo name='Finally' />
                 <Box className={classes.bodyPosition}>
-                  <BodyTypo name={`ここまで読んでくださり、ありがとうございます。本サイトの今後に運用等ついては検討中です。`} />
+                  <BodyTypo name={`ここまで読んでくださいまして、ありがとうございます。本サイトの今後に運用等ついては検討中です。まずはレイアウト等の調整をしていけたらと考えています。`} />
                 </Box>
               </Box>
             </Grid>
