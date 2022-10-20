@@ -213,7 +213,7 @@ function Contact() {
                 />
               </Box>
               <Box className={classes.othersForms}>
-                <StyledTextField id="title" placeholder="○○の件" variant="outlined" value={title} defaultValue=''
+                <StyledTextField id="title" placeholder="〇〇の件" variant="outlined" value={title} defaultValue=''
                   onChange={(e) => setTitle(e.target.value)}
                   sx={{
                     marginRight: '192px',

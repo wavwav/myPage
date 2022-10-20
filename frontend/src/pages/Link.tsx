@@ -43,7 +43,7 @@ function Link() {
         <Box className={classes.topDefaultBoxPosition}>
           <SubtitleTypo name='Link' />
           <Box className={classes.bodyPosition}>
-            <BodyTypo name='未定' />
+            <BodyTypo name='検討中' />
           </Box>
         </Box>
       </Grid>
