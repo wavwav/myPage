@@ -14,6 +14,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import { couldStartTrivia } from 'typescript';
 import { SnackbarContent } from '@mui/material';
+import { mailRegex } from '../conponents/pageUtil/utils';
 
 export interface State extends SnackbarOrigin {
   open: boolean;
@@ -121,6 +122,8 @@ function Contact() {
   const [mail, setMail] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [message, setMessage] = useState<string>('');
+  // falseの状態が正規表現に当てはまっていない状態
+  const [mailCheck, setMailCheck] = useState<boolean>(false);
 
   const classes = useStyles();
 
@@ -173,6 +176,14 @@ function Contact() {
 
   }
 
+  const submitCheck = () => {
+    if (isEmpty(name) || isEmpty(mail) || isEmpty(title) || isEmpty(message) || !mailCheck) {
+      // 何か不備があればsubmitボタンが非活性化
+      return true;
+    }
+    return false;
+  }
+
   return (
     <Box>
       <TopBar />
@@ -205,11 +216,17 @@ function Contact() {
 
               <Box className={classes.othersForms}>
                 <StyledTextField id="from_email" placeholder="sunataro@sauna.co.jp" variant="outlined" value={mail} defaultValue=''
-                  onChange={(e) => setMail(e.target.value)}
+                  onChange={(e) => {
+                    setMail(e.target.value)
+                    setMailCheck(mailRegex(e.target.value))
+                  }
+                  }
                   sx={{
                     marginRight: '192px',
 
                   }}
+                  error={!mailCheck && mail.length > 0}
+                  helperText={(!mailCheck && mail.length > 0) && 'メールアドレスはxxx@a.b.ccの形式又はxxx@aaa.bbで入力してください'}
                 />
               </Box>
               <Box className={classes.othersForms}>
@@ -235,7 +252,7 @@ function Contact() {
           </Box>
           <Box className={classes.buttonPosition}>
             <Button variant='contained' color='primary' onClick={(e) => sendEmail(e)}
-              disabled={isEmpty(name) || isEmpty(mail) || isEmpty(title) || isEmpty(message)}>
+              disabled={submitCheck()}>
               送信
           </Button>
           </Box>
