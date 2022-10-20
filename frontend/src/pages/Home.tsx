@@ -18,10 +18,6 @@ const useStyles = makeStyles(() => ({
     marginTop: '120px',
     display: 'flex'
   },
-  topDefaultBoxPosition: {
-    marginTop: '180px',
-    display: 'flex'
-  },
   leftSeparate: {
     marginLeft: '68px'
   },
@@ -56,9 +52,12 @@ function Home() {
     <Box>
       <TopBar />
       <Grid container={true} className={classes.rootPadding}>
+        <Box className={classes.defaultBoxPosition}>
+          <SubtitleTypo name='About' />
+        </Box>
         {/* 自己紹介 */}
         <Grid container={true} item={true} lg={12} md={12} xs={12}>
-          <Box className={classes.topDefaultBoxPosition}>
+          <Box className={classes.defaultBoxPosition}>
             <Grid item={true} lg={6} md={6} xs={6}>
               <Box className={classes.rightSeparate}>
                 <Box className={classes.pngPosition}>

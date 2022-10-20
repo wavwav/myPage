@@ -4,14 +4,14 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import {  makeStyles } from '@mui/styles';
+import { makeStyles } from '@mui/styles';
 import TopBarTypo from './TopBarTypo';
 import { Link } from 'react-router-dom'
 import Biography from '../../pages/Biography';
 
-const pageTitle = ['Home', 'Biography', 'Contact','Link'];
+const pageTitle = ['Home', 'Biography', 'Contact', 'Link'];
 
-const useStyles = makeStyles(() => 　({
+const useStyles = makeStyles(() => ({
   toolbarWrapper: {
     // 下記のように記述することで(開発者ツールにて)初期値として付与されているCSSを上書きできる
     '& .MuiContainer-root': {
@@ -24,12 +24,12 @@ const useStyles = makeStyles(() => 　({
   },
 }));
 
-const toList = (name:string):string => {
-  if(name === 'Biography'){
+const toList = (name: string): string => {
+  if (name === 'Biography') {
     return '/biography'
-  } if(name === 'Contact'){
+  } if (name === 'Contact') {
     return '/contact'
-  } if(name === 'Link'){
+  } if (name === 'Link') {
     return '/link'
   }
 
@@ -42,35 +42,32 @@ const TopBar = () => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static" sx={{
-     boxShadow: '0 0 0 0 rgba(0, 0, 0, .0)',
-    bgcolor:'#000000',
-    position: "fixed",
-    zIndex: 9999,
+    // fixedだと、下に要素が入ってしまうためfixedよりsitckyの方がよい。
+    <AppBar position="sticky"
+      sx={{
+        boxShadow: '0 0 0 0 rgba(0, 0, 0, .0)',
+        bgcolor: '#000000',
+        zIndex: 9999,
 
-    }}
-    className={classes.toolbarWrapper}
-    >
-      <Container
-      sx={{padding:0
       }}
-
-      >
-        <Toolbar disableGutters sx={{padding:'0 0 0 0',maxHeight: '60px' }} >
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'center'} }}>
-            {pageTitle.map((page,index) => (
+      className={classes.toolbarWrapper}
+    >
+      <Container>
+        <Toolbar disableGutters >
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'center' } }}>
+            {pageTitle.map((page, index) => (
               <Button
                 key={page}
                 sx={{
-                  color:'#FFFFFF',
+                  color: '#FFFFFF',
                   marginRight: pageTitle.length === index + 1 ? 0 : '64px',
-                   '& :hover':{
-                    color:'#FFFFFF',
-                    opacity:0.6
-                },
+                  '& :hover': {
+                    color: '#FFFFFF',
+                    opacity: 0.6
+                  },
                 }}
-              component={Link}
-              to={toList(page)}
+                component={Link}
+                to={toList(page)}
               >
                 <TopBarTypo titleName={page} />
               </Button>

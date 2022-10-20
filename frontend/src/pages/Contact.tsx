@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex'
   },
   topDefaultBoxPosition: {
-    marginTop: '180px',
+    marginTop: '120px',
   },
   titleBox: {
     minWidth: '98px',
