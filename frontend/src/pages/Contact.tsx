@@ -259,7 +259,7 @@ function Contact() {
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleClose}
-        message="お問い合わせを送信致しました。"
+        message="お問い合わせを送信いたしました。"
         key={vertical + horizontal}
 
       >
