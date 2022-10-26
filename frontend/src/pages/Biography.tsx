@@ -60,27 +60,25 @@ function Biography() {
           <SubtitleTypo name='Biography' />
           <Box className={classes.bodyPosition}>
             <Box>
-              <>
-                {BioArray.map((bio, index) =>
-                  <Box className={index === 0 ? classes.contentPosition : classes.othersContentPosition}>
-                    <DateTypo date={bio.date} />
-                    <Box className={classes.dateContentMargin}>
-                      <BioBodyTypo name={bio.org1} />
-                      {bio.org2 && (
-                        <Box className={classes.contentMargin}>
-                          <BioBodyTypo name={bio.org2 || ''} />
-                        </Box>)}
-                      {bio.org3 && (
-                        <Box className={classes.contentMargin}>
-                          <BioBodyTypo name={bio.org3 || ''} />
-                        </Box>)}
+              {BioArray.map((bio, index) =>
+                <Box className={index === 0 ? classes.contentPosition : classes.othersContentPosition}>
+                  <DateTypo date={bio.date} />
+                  <Box className={classes.dateContentMargin}>
+                    <BioBodyTypo name={bio.org1} />
+                    {bio.org2 && (
                       <Box className={classes.contentMargin}>
-                        <BioBodyTypo name={bio.status} />
-                      </Box>
+                        <BioBodyTypo name={bio.org2 || ''} />
+                      </Box>)}
+                    {bio.org3 && (
+                      <Box className={classes.contentMargin}>
+                        <BioBodyTypo name={bio.org3 || ''} />
+                      </Box>)}
+                    <Box className={classes.contentMargin}>
+                      <BioBodyTypo name={bio.status} />
                     </Box>
                   </Box>
-                )}
-              </>
+                </Box>
+              )}
             </Box>
           </Box>
         </Box>
