@@ -10,8 +10,8 @@ import {
 } from 'react-router-dom'
 
 function App() {
-  return (
-            <BrowserRouter>
+    return (
+        <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="biography" element={<Biography />} />
@@ -19,7 +19,7 @@ function App() {
                 <Route path="link" element={<Link />} />
             </Routes>
         </BrowserRouter>
-  );
+    );
 }
 
 export default App;

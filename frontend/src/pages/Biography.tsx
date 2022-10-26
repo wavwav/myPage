@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
 import TopBar from '../conponents/topbar/TopBar';
 import { makeStyles } from '@mui/styles';
@@ -10,6 +10,8 @@ import work from '../work.png';
 import book from '../book.png';
 import DateTypo from '../conponents/pageUtil/DateTypo';
 import BioBodyTypo from '../conponents/pageUtil/BioBodyTypo';
+import { BioArray } from '../conponents/pageUtil/commons/constBiography';
+import { useState } from 'react';
 
 const useStyles = makeStyles(() => ({
   rootPadding: {
@@ -46,6 +48,9 @@ const useStyles = makeStyles(() => ({
 
 function Biography() {
   const classes = useStyles();
+
+  const [bios, setBios] = useState(BioArray);
+
   return (
     <Box>
       <TopBar />
@@ -55,78 +60,27 @@ function Biography() {
           <SubtitleTypo name='Biography' />
           <Box className={classes.bodyPosition}>
             <Box>
-              <Box className={classes.contentPosition}>
-                <DateTypo date='2013年04月' />
-                <Box className={classes.dateContentMargin}>
-                  <BioBodyTypo name='宮崎県立宮崎西高等学校' />
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='普通科' />
+              <>
+                {BioArray.map((bio, index) =>
+                  <Box className={index === 0 ? classes.contentPosition : classes.othersContentPosition}>
+                    <DateTypo date={bio.date} />
+                    <Box className={classes.dateContentMargin}>
+                      <BioBodyTypo name={bio.org1} />
+                      {bio.org2 && (
+                        <Box className={classes.contentMargin}>
+                          <BioBodyTypo name={bio.org2 || ''} />
+                        </Box>)}
+                      {bio.org3 && (
+                        <Box className={classes.contentMargin}>
+                          <BioBodyTypo name={bio.org3 || ''} />
+                        </Box>)}
+                      <Box className={classes.contentMargin}>
+                        <BioBodyTypo name={bio.status} />
+                      </Box>
+                    </Box>
                   </Box>
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='入学' />
-                  </Box>
-                </Box>
-              </Box>
-              <Box className={classes.othersContentPosition}>
-                <DateTypo date='2016年03月' />
-                <Box className={classes.dateContentMargin}>
-                  <BioBodyTypo name='宮崎県立宮崎西高等学校' />
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='普通科' />
-                  </Box>
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='卒業' />
-                  </Box>
-                </Box>
-              </Box>
-              <Box className={classes.othersContentPosition}>
-                <DateTypo date='2016年04月' />
-                <Box className={classes.dateContentMargin}>
-                  <BioBodyTypo name='中央大学' />
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='経済学部' />
-                  </Box>
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='経済情報システム学科' />
-                  </Box>
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='入学' />
-                  </Box>
-                </Box>
-              </Box>
-              <Box className={classes.othersContentPosition}>
-                <DateTypo date='2020年03月' />
-                <Box className={classes.dateContentMargin}>
-                  <BioBodyTypo name='中央大学' />
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='経済学部' />
-                  </Box>
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='経済情報システム学科' />
-                  </Box>
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='卒業' />
-                  </Box>
-                </Box>
-              </Box>
-              <Box className={classes.othersContentPosition}>
-                <DateTypo date='2020年04月' />
-                <Box className={classes.dateContentMargin}>
-                  <BioBodyTypo name='現職' />
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='入社' />
-                  </Box>
-                </Box>
-              </Box>
-              <Box className={classes.othersContentPosition}>
-                <DateTypo date='2022年10月' />
-                <Box className={classes.dateContentMargin}>
-                  <BioBodyTypo name='現職' />
-                  <Box className={classes.contentMargin}>
-                    <BioBodyTypo name='在籍' />
-                  </Box>
-                </Box>
-              </Box>
+                )}
+              </>
             </Box>
           </Box>
         </Box>

@@ -14,7 +14,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import { couldStartTrivia } from 'typescript';
 import { SnackbarContent } from '@mui/material';
-import { mailRegex } from '../conponents/pageUtil/utils';
+import { mailRegex } from '../conponents/pageUtil/commons/utils';
 
 export interface State extends SnackbarOrigin {
   open: boolean;
