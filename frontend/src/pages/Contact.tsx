@@ -9,10 +9,7 @@ import { TextField } from '@mui/material';
 import styled from '@mui/material/styles/styled';
 import { Button } from '@mui/material';
 import { isEmpty } from 'lodash';
-import { IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
-import { couldStartTrivia } from 'typescript';
 import { SnackbarContent } from '@mui/material';
 import { mailRegex } from '../conponents/pageUtil/commons/utils';
 
