@@ -17,6 +17,7 @@ import MailIcon from '@mui/icons-material/Mail';
 
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import BodyTypo from '../pageUtil/BodyTypo';
+import { useState } from 'react';
 
 const drawerWidth = 240;
 
@@ -96,6 +97,35 @@ const TopBar = () => {
     setOpen(false);
   };
 
+
+  // windowの横幅を取得
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
+  const resize = () => {
+
+    let timeoutID: any = 0;
+    let delay = 100;
+
+    window.addEventListener("resize", () => {
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(() => {
+
+        setWindowWidth(window.innerWidth);
+
+      }, delay);
+    }, false);
+  };
+
+  resize();
+
+  const checkMdWidth = (width: number): boolean => {
+    // sizeが半分の定義はMaterial　UIのmdから
+    if (width < 900) {
+      return true
+    } else {
+      return false
+    }
+  }
   return (
     // fixedだと、下に要素が入ってしまうためfixedよりsitckyの方がよい。
     <>
@@ -110,15 +140,17 @@ const TopBar = () => {
       >
         <Container>
           <Toolbar disableGutters >
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={{ [theme.breakpoints.down('md')]: { marginLeft: '48px' }, ...(open && { display: 'none' }) }}
-            >
-              <MenuIcon />
-            </IconButton>
+            {checkMdWidth(windowWidth) && (
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                sx={{ [theme.breakpoints.down('md')]: { marginLeft: '48px' }, ...(open && { display: 'none' }) }}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'center' } }}>
               {pageTitle.map((page, index) => (
                 <Button
