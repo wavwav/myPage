@@ -223,7 +223,7 @@ function Contact() {
 
                   }}
                   error={!mailCheck && mail.length > 0}
-                  helperText={(!mailCheck && mail.length > 0) && 'メールアドレスはxxx@a.b.ccの形式又はxxx@aaa.bbで入力してください'}
+                  helperText={(!mailCheck && mail.length > 0) && 'メールアドレスはxxx@a.b.ccの形式又はxxx@aaa.bbの形式で入力してください'}
                 />
               </Box>
               <Box className={classes.othersForms}>
