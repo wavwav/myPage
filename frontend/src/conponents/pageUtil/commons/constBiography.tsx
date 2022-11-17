@@ -33,7 +33,7 @@ export const BioArray: bio[] = [
     status: '入社'
   },
   {
-    date: '2022年10月',
+    date: '2022年11月',
     org1: '現職',
     status: '在籍'
   }
