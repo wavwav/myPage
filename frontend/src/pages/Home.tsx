@@ -148,7 +148,7 @@ SIerにて新卒から働いており、現在3年目になります。
               <Box className={classes.rightSeparate}>
                 <SubtitleTypo name='Finally' />
                 <Box className={classes.bodyPosition}>
-                  <BodyTypo name={`ここまで読んでくださいまして、ありがとうございます。本サイトの今後に運用等ついては検討中です。まずはレイアウト等の調整をしていけたらと考えています。`} />
+                  <BodyTypo name={`ここまで読んでくださいまして、ありがとうございます。本サイトは現在フロントエンドのみで構成されているので、バックエンドにも着手したいと考えています。そこで、目先はAPIとDBを用意して簡易的なブログ機能を作っていこうと思っています。`} />
                 </Box>
               </Box>
             </Grid>
