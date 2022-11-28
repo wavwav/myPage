@@ -5,6 +5,8 @@ import { makeStyles } from '@mui/styles';
 import SubtitleTypo from '../conponents/pageUtil/SubtitleTypo';
 import BodyTypo from '../conponents/pageUtil/BodyTypo';
 
+import { Link } from '@mui/material';
+
 const useStyles = makeStyles(() => ({
   rootPadding: {
     padding: '0 136px',
@@ -21,8 +23,11 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
     display: 'flex'
   },
+  topLinkPosition: {
+    marginTop: '40px',
+  },
   bodyPosition: {
-    marginTop: '24px',
+    marginTop: '16px',
   },
   bodyItemPosition: {
     marginTop: '16px',
@@ -34,7 +39,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function Link() {
+function Links() {
   const classes = useStyles();
   return (
     <Box>
@@ -42,13 +47,20 @@ function Link() {
       <Grid container={true} className={classes.rootPadding}>
         <Box className={classes.topDefaultBoxPosition}>
           <SubtitleTypo name='Link' />
+          <Box className={classes.topLinkPosition}>
+                    <Link href="https://xd.adobe.com/view/3d5e7ec0-91d8-4ba4-a657-1fa15867af2f-680d/" underline="hover">
+                      {'Adobe XD'}
+                    </Link>
+
           <Box className={classes.bodyPosition}>
-            <BodyTypo name='検討中' />
-          </Box>
+                    <BodyTypo name={`このサイトを実装前に作成した画面モックです。実装後に変更した部分もあるので、少し異なる部分があるかもしれません。
+直近ではブログ機能を作るためにブログの画面モックを追加しました。` }/>
+           </Box>
+            </Box>
         </Box>
       </Grid>
     </Box>
   );
 }
 
-export default Link;
+export default Links;

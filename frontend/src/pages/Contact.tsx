@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import TopBar from '../conponents/topbar/TopBar';
 import { makeStyles } from '@mui/styles';
 import SubtitleTypo from '../conponents/pageUtil/SubtitleTypo';
-import FormTitleTypo from '../conponents/pageUtil/FormTitleTypo';
+import TitleTypo from '../conponents/pageUtil/TitleTypo';
 import emailjs from '@emailjs/browser';
 import { TextField } from '@mui/material';
 import styled from '@mui/material/styles/styled';
@@ -193,16 +193,16 @@ function Contact() {
           <Box className={classes.topBoxMargin}>
             <Box className={classes.formsMargin}>
               <Box className={classes.titleBox}>
-                <FormTitleTypo name="お名前" />
+                <TitleTypo name="お名前" />
               </ Box>
               <Box className={classes.othersFormTitle}>
-                <FormTitleTypo name="メールアドレス" />
+                <TitleTypo name="メールアドレス" />
               </Box>
               <Box className={classes.othersFormTitle}>
-                <FormTitleTypo name="件名" />
+                <TitleTypo name="件名" />
               </Box>
               <Box className={classes.othersFormTitle}>
-                <FormTitleTypo name="本文" />
+                <TitleTypo name="本文" />
               </Box>
             </Box>
             {/* フォーム */}

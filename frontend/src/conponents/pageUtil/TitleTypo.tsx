@@ -5,7 +5,7 @@ interface Props {
   name: string;
 }
 
-const FormTitleTypo: React.FC<Props> = ({ name }) => {
+const TitleTypo: React.FC<Props> = ({ name }) => {
   return (
     <Typography variant='subtitle2'
       sx={{
@@ -19,4 +19,4 @@ const FormTitleTypo: React.FC<Props> = ({ name }) => {
   );
 };
 
-export default FormTitleTypo;
+export default TitleTypo;
